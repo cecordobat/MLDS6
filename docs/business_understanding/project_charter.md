@@ -27,8 +27,8 @@ Se utilizará el dataset disponible en Kaggle que contiene transacciones reales 
 
 ## Cronograma
 
-| Etapa | Duración Estimada | 
-|------|---------|-------|
+| Etapa | Duración Estimada |
+|------|---------|
 | Entendimiento del negocio y carga de datos | 1 semana |
 | Preprocesamiento, análisis exploratorio | 2 semanas |
 | Modelamiento y extracción de características | 2 semanas |
