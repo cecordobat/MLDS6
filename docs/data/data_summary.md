@@ -75,4 +75,4 @@ El análisis exploratorio reveló varias relaciones interesantes entre las varia
 *   **Coordenadas Geográficas:** No se encontró una relación lineal significativa entre la ubicación del comerciante (`merch_lat`, `merch_long`) y la variable `is_fraud`.
 
 ### MAtriz de Correlaciones
-![Variable Objetivo](imagenes/matrixz.png)
+![Variable Objetivo](imagenes/matriz2.png)
