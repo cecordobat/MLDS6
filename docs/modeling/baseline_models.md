@@ -101,4 +101,5 @@ El modelo baseline muestra un buen desempeño general, con una accuracy del 95.2
 
 ## Referencias
 Dataset: [Credit Card Transactions Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection/data)
+
 Métricas de desempeño: Accuracy, Precision, Recall, F1-Score, AUC-ROC.
