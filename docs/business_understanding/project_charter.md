@@ -19,7 +19,7 @@ El proyecto utilizará un conjunto de datos de transacciones con tarjetas de cr�
 Desarrollar un modelo de machine learning capaz de identificar transacciones fraudulentas con alta precisión, minimizando falsos negativos y proporcionando una herramienta útil para la detección automatizada de fraudes.
 
 - Criterios de éxito del proyecto:
-Se busca generar una métricas de desempeño aceptables (>80) para recall y accuracy.
+Se busca generar una métricas de desempeño aceptables (>85) para recall y accuracy.
 
 ## Metodología
 
