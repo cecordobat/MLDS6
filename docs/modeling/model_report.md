@@ -24,7 +24,7 @@ El objetivo principal es predecir la probabilidad de fraude en una transacción 
 
 ## Descripción del Modelo
 
-### 🤖 Modelo Final Seleccionado
+### Modelo Final Seleccionado
 
 El modelo final desarrollado para la detección de fraudes en transacciones de tarjetas de crédito es una **Regresión Logística** con características de regularización L2 y manejo balanceado de clases. Este modelo fue seleccionado por su simplicidad, interpretabilidad y eficiencia computacional, factores cruciales para un sistema de detección de fraudes en tiempo real.
 
