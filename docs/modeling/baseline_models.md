@@ -1,11 +1,11 @@
 # Reporte del Modelo Baseline - Detección del fraude transaccional en tarjetas de crédito usando un modelo de machine learning
 
 Este documento contiene los resultados del modelo baseline (regresión logística) tomando como punto de referencia un muestreo aleatorio inicial del 10% del total de base de Kaggle (Sparkov Data Generation).
-Las limitaciones de la ejecución en Colab no permite comparar respecto de modelos más complejos como Random Forest, Árboles de decisión, XGB, LightGB, entre otros.
 
 ## Descripción del modelo
 
 El modelo baseline es el primer modelo construido y se utiliza para establecer una línea base para el rendimiento de los modelos posteriores.
+Las limitaciones de la ejecución en Colab no permite comparar respecto de modelos más complejos como Random Forest, Árboles de decisión, XGB, LightGB, entre otros.
 
 ## Variables de entrada
 
