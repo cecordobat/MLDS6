@@ -16,7 +16,7 @@ La calidad del conjunto de datos es alta en términos de integridad:
 
 La variable objetivo es `is_fraud`, que indica si una transacción es fraudulenta (1) o no (0). La distribución de esta variable muestra un desbalance extremo: la gran mayoría de las transacciones son legítimas (0), mientras que las fraudulentas (1) representan un porcentaje muy pequeño del total. Este desbalance es característico en problemas de detección de fraudes.
 
-![Variable Objetivo](docs/data/imagenes/fraude.png)
+![Variable Objetivo](imagenes/fraude.png)
 
 ## Variables individuales
 
