@@ -13,7 +13,7 @@ app = Flask(__name__)
 model = joblib.load('modelo_fraude.pkl')
 scaler = joblib.load('scaler.pkl')
 
-with open('modelo/features.json', 'r') as f:
+with open('features.json', 'r') as f:
     features_info = json.load(f)
 
 # Función de predicción
