@@ -22,8 +22,6 @@ El objetivo principal es predecir la probabilidad de fraude en una transacción 
 
 ## Descripción del Modelo
 
-## Descripción del Modelo
-
 ### Modelo Final Seleccionado
 
 El modelo final desarrollado para la detección de fraudes en transacciones de tarjetas de crédito es una **Regresión Logística** con características de regularización L2 y manejo balanceado de clases. Este modelo fue seleccionado por su simplicidad, interpretabilidad y eficiencia computacional, factores cruciales para un sistema de detección de fraudes en tiempo real.
@@ -194,7 +192,7 @@ La validación cruzada estratificada demostró que el modelo es **estable y cons
 - **Modelo base** para ensemble learning con modelos más complejos
 - **Sistema de respaldo** cuando modelos complejos fallan
 
-### 🚀 Recomendaciones para Mejora
+### Recomendaciones para Mejora
 
 **1. Mejora Inmediata**
 - **Monitoreo continuo** del rendimiento en producción
@@ -218,7 +216,7 @@ La validación cruzada estratificada demostró que el modelo es **estable y cons
 
 ### Conclusión Final
 
-El modelo baseline muestra un buen desempeño general, con una accuracy del 95.23% y una AUC-ROC de 0.9749, lo cual indica una excelente capacidad para distinguir entre clases. Además, el recall (89.85%) sugiere que el modelo identifica correctamente la mayoría de los casos positivos, lo que es especialmente relevante si el problema implica riesgos por falsos negativos (fraude transaccional).
+El modelo final muestra un buen desempeño general, con una accuracy del 95.23% y una AUC-ROC de 0.9749, lo cual indica una excelente capacidad para distinguir entre clases. Además, el recall (89.85%) sugiere que el modelo identifica correctamente la mayoría de los casos positivos, lo que es especialmente relevante si el problema implica riesgos por falsos negativos (fraude transaccional).
 
 ## Referencias
 
