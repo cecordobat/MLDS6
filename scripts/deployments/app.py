@@ -8,8 +8,10 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Cargar modelo y componentes
-model = joblib.load('modelo/modelo_fraude.pkl')
-scaler = joblib.load('modelo/scaler.pkl')
+#model = joblib.load('modelo/modelo_fraude.pkl')
+#scaler = joblib.load('modelo/scaler.pkl')
+model = joblib.load('modelo_fraude.pkl')
+scaler = joblib.load('scaler.pkl')
 
 with open('modelo/features.json', 'r') as f:
     features_info = json.load(f)
