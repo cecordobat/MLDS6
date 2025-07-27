@@ -36,7 +36,7 @@
 - **Instrucciones de uso:**
   - Enviar una solicitud de evaluación de fraude POST a la siguiente URL: `https://mlds6-fraud-detection-api.onrender.com/predict` con una transacción que esté en formato JSON.
   - Ejemplo:
-    ```{"amt": 100.50, "category": "grocery_pos", ...}'
+    ```{"amt": 25.75, "category": "gas_transport", "gender": "M", "state": "TX", "job": "driver", "city": "Houston", "merchant": "legit_gas_station", "lat": 29.7604, "long": -95.3698, "city_pop": 2320268, "merch_lat": 29.7700, "merch_long": -95.3500, "day": 10, "month": 8, "hour": 8, "minute": 15, "age": 38}
     ```
 - **Instrucciones de mantenimiento:**
   - Para actualizar el modelo, reentrenarlo localmente con las mismas versiones de librerías, reemplazar `modelo_fraude_v1.pkl` y hacer push a GitHub para un nuevo despliegue automático.
