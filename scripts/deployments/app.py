@@ -61,103 +61,54 @@ def predict():
 # Health check
 @app.route('/')
 def index():
-    # Puedes devolver directamente HTML o usar un motor de plantillas como Jinja2
     return '''
     <!DOCTYPE html>
     <html>
     <head>
         <title>Detector de Fraude</title>
         <style>
-            body { font-family: Arial, sans-serif; margin: 40px; }
-            input, select { margin: 5px 0; padding: 8px; width: 200px; }
-            button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; margin-top: 10px; }
-            #resultado { margin-top: 20px; padding: 15px; border-radius: 5px; }
-            .fraude { background-color: #ffdddd; border-left: 6px solid #f44336; }
-            .legitimo { background-color: #ddffdd; border-left: 6px solid #4CAF50; }
+            body { font-family: Arial, sans-serif; margin: 40px; max-width: 800px; }
+            textarea { width: 100%; height: 150px; padding: 10px; font-family: monospace; }
+            button { padding: 12px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; margin-top: 10px; font-size: 16px; }
+            button:hover { background-color: #45a049; }
+            #resultado { margin-top: 20px; padding: 15px; border-radius: 5px; white-space: pre-wrap; font-family: monospace; }
+            .fraude { background-color: #ffebee; border-left: 6px solid #f44336; }
+            .legitimo { background-color: #e8f5e9; border-left: 6px solid #4CAF50; }
+            .error { background-color: #ffebee; border-left: 6px solid #f44336; color: #c62828; }
+            .ejemplo { background-color: #e3f2fd; padding: 10px; margin-top: 10px; font-size: 12px; }
         </style>
     </head>
     <body>
         <h1>Detector de Fraude en Transacciones</h1>
-        <form id="formularioTransaccion">
-            <!-- Campos para los datos de la transacción -->
-            <label for="amt">Monto (amt):</label><br>
-            <input type="number" id="amt" name="amt" step="0.01" required><br>
+        <p>Ingrese los datos de la transacción en formato JSON:</p>
+        <textarea id="jsonData" placeholder='{"amt": 100.50, "category": "grocery_pos", "gender": "M", ...}'>{"amt": 100.50, "category": "grocery_pos", "gender": "M", "state": "CA", "job": "engineer", "city": "Los Angeles", "merchant": "fraud_Merchant123", "lat": 34.0522, "long": -118.2437, "city_pop": 3979576, "merch_lat": 34.0522, "merch_long": -118.2437, "day": 15, "month": 6, "hour": 14, "minute": 30, "age": 35}</textarea>
+        <br>
+        <button onclick="evaluarTransaccion()">Evaluar Transacción</button>
+        
+        <div class="ejemplo">
+            <p><strong>Ejemplo de formato JSON:</strong></p>
+            <code>
+{"amt": 100.50, "category": "grocery_pos", "gender": "M", "state": "CA", "job": "engineer", "city": "Los Angeles", "merchant": "fraud_Merchant123", "lat": 34.0522, "long": -118.2437, "city_pop": 3979576, "merch_lat": 34.0522, "merch_long": -118.2437, "day": 15, "month": 6, "hour": 14, "minute": 30, "age": 35}
+            </code>
+        </div>
 
-            <label for="category">Categoría (category):</label><br>
-            <select id="category" name="category" required>
-                <option value="grocery_pos">Grocery (POS)</option>
-                <option value="shopping_net">Shopping (Online)</option>
-                <option value="gas_transport">Gas/Transport</option>
-                <option value="food_dining">Food/Dining</option>
-                <option value="entertainment">Entertainment</option>
-                <!-- Agrega más opciones según tu dataset -->
-            </select><br>
-
-            <label for="gender">Género (gender):</label><br>
-            <select id="gender" name="gender" required>
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
-            </select><br>
-
-            <label for="state">Estado (state):</label><br>
-            <input type="text" id="state" name="state" maxlength="2" required><br>
-
-            <label for="job">Ocupación (job):</label><br>
-            <input type="text" id="job" name="job" required><br>
-
-            <label for="city">Ciudad (city):</label><br>
-            <input type="text" id="city" name="city" required><br>
-
-            <label for="merchant">Comerciante (merchant):</label><br>
-            <input type="text" id="merchant" name="merchant" required><br>
-
-            <label for="lat">Latitud Cliente (lat):</label><br>
-            <input type="number" id="lat" name="lat" step="0.0001" required><br>
-
-            <label for="long">Longitud Cliente (long):</label><br>
-            <input type="number" id="long" name="long" step="0.0001" required><br>
-
-            <label for="city_pop">Población Ciudad (city_pop):</label><br>
-            <input type="number" id="city_pop" name="city_pop" required><br>
-
-            <label for="merch_lat">Latitud Comerciante (merch_lat):</label><br>
-            <input type="number" id="merch_lat" name="merch_lat" step="0.0001" required><br>
-
-            <label for="merch_long">Longitud Comerciante (merch_long):</label><br>
-            <input type="number" id="merch_long" name="merch_long" step="0.0001" required><br>
-
-            <label for="day">Día (day):</label><br>
-            <input type="number" id="day" name="day" min="1" max="31" required><br>
-
-            <label for="month">Mes (month):</label><br>
-            <input type="number" id="month" name="month" min="1" max="12" required><br>
-
-            <label for="hour">Hora (hour):</label><br>
-            <input type="number" id="hour" name="hour" min="0" max="23" required><br>
-
-            <label for="minute">Minuto (minute):</label><br>
-            <input type="number" id="minute" name="minute" min="0" max="59" required><br>
-
-            <label for="age">Edad (age):</label><br>
-            <input type="number" id="age" name="age" min="10" max="90" required><br>
-
-            <button type="submit">Evaluar Transacción</button>
-        </form>
         <div id="resultado"></div>
 
         <script>
-            document.getElementById('formularioTransaccion').addEventListener('submit', async function(e) {
-                e.preventDefault(); // Evitar envío normal del formulario
+            async function evaluarTransaccion() {
+                const jsonString = document.getElementById('jsonData').value;
+                const divResultado = document.getElementById('resultado');
 
-                // Recopilar datos del formulario
-                const formData = new FormData(this);
-                const datosTransaccion = {};
-                for (const [key, value] of formData.entries()) {
-                    // Intentar convertir a número si es posible, de lo contrario dejar como string
-                    datosTransaccion[key] = isNaN(value) || value === '' ? value : Number(value);
+                if (!jsonString.trim()) {
+                    divResultado.innerHTML = 'Por favor, ingrese datos en formato JSON.';
+                    divResultado.className = 'error';
+                    return;
                 }
 
                 try {
+                    // Intentar parsear el JSON para validar
+                    const datosTransaccion = JSON.parse(jsonString);
+
                     // Enviar solicitud POST a /predict
                     const response = await fetch('/predict', {
                         method: 'POST',
@@ -168,26 +119,35 @@ def index():
                     });
 
                     if (!response.ok) {
-                        throw new Error(`Error HTTP: ${response.status}`);
+                        const errorText = await response.text();
+                        throw new Error(`Error HTTP ${response.status}: ${errorText}`);
                     }
 
                     const resultado = await response.json();
 
-                    // Mostrar resultado
-                    const divResultado = document.getElementById('resultado');
-                    divResultado.innerHTML = `
-                        <h3>Resultado de la Predicción:</h3>
-                        <p><strong>Es Fraude:</strong> ${resultado.es_fraude === 1 ? 'Sí' : 'No'}</p>
-                        <p><strong>Probabilidad:</strong> ${(resultado.probabilidad_fraude * 100).toFixed(2)}%</p>
-                        <p><strong>Mensaje:</strong> ${resultado.mensaje}</p>
-                    `;
-                    // Aplicar estilo según el resultado
+                    // Mostrar resultado formateado
+                    const mensajeResultado = `Es Fraude: ${resultado.es_fraude === 1 ? 'Sí' : 'No'}
+Probabilidad: ${(resultado.probabilidad_fraude * 100).toFixed(2)}%
+Mensaje: ${resultado.mensaje}`;
+
+                    divResultado.textContent = mensajeResultado;
                     divResultado.className = resultado.es_fraude === 1 ? 'fraude' : 'legitimo';
 
                 } catch (error) {
                     console.error('Error:', error);
-                    document.getElementById('resultado').innerHTML = `<p style="color:red;">Error al evaluar la transacción: ${error.message}</p>`;
-                    document.getElementById('resultado').className = '';
+                    let mensajeError = `Error al evaluar la transacción: ${error.message}`;
+                    if (error instanceof SyntaxError) {
+                        mensajeError = 'Error: El texto ingresado no es un JSON válido. Por favor, revise el formato.';
+                    }
+                    divResultado.textContent = mensajeError;
+                    divResultado.className = 'error';
+                }
+            }
+
+            // Permitir enviar con Ctrl+Enter
+            document.getElementById('jsonData').addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    evaluarTransaccion();
                 }
             });
         </script>
@@ -195,8 +155,8 @@ def index():
     </html>
     '''
 
-# ... (tu código existente para /predict y /health) ...
 
 if __name__ == '__main__':
+    # Asegúrate de que esta línea esté después de las importaciones
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
