@@ -21,7 +21,8 @@ Este proyecto tuvo como objetivo desarrollar e implementar un modelo de machine 
 
 - **Desafíos:** La principal dificultad fue resolver las incompatibilidades de versiones entre el entorno de entrenamiento local y el entorno de producción en Render, lo que requirió una gestión cuidadosa de las dependencias (`scikit-learn`, `numpy`, 'pandas'). También se enfrentó el desafío de configurar correctamente el entorno de ejecución de Python en Render, incluyendo la necesidad de definir explícitamente la variable de entorno `PYTHON_VERSION=3.11.11` y asegurar que las rutas de los archivos del modelo fueran correctas. Además, se manejaron advertencias de seguridad relacionadas con la carga de modelos (`InconsistentVersionWarning`) debido a diferencias en las versiones de las bibliotecas usadas para entrenar y cargar el modelo.
 - **Aprendizajes:** La importancia de mantener un entorno consistente entre desarrollo y producción. El despliegue en la nube requiere atención a detalles como variables de entorno, estructura de archivos y compatibilidad de versiones de librerías.
-- **Recomendaciones:** Para futuros proyectos, se recomienda el uso de entornos virtuales con versiones fijas (`pip freeze`) y considerar formatos de serialización más robustos como `ONNX` o `skops.io` para mejorar la portabilidad, seguridad y mantenibilidad del modelo. Es crucial documentar y mantener sincronizadas las versiones de todas las dependencias entre los entornos de entrenamiento y despliegue.
+- **Recomendaciones:** Para futuros proyectos, se recomienda el uso de entornos virtuales con versiones fijas (`pip freeze`) y considerar formatos de serialización más robustos como `ONNX` o `skops.io` para mejorar la portabilidad, seguridad y mantenibilidad del modelo.
+- Es crucial documentar y mantener sincronizadas las versiones de todas las dependencias entre los entornos de entrenamiento y despliegue.
 
 ## Impacto del proyecto
 
