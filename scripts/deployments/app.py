@@ -3,6 +3,7 @@ import numpy as np
 import joblib
 import json
 from flask import Flask, request, jsonify
+import os
 
 # Inicializar Flask
 app = Flask(__name__)
