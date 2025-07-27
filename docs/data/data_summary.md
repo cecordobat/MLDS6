@@ -64,15 +64,19 @@ Basado en el análisis exploratorio del notebook proporcionado, aquí se present
 
 ## Relación entre variables explicativas y variable objetivo
 
-El análisis exploratorio reveló varias relaciones interesantes entre las variables explicativas y la variable objetivo `is_fraud`:
-*   **Monto (`amt`):** Las transacciones fraudulentas tienden a tener montos más altos, con una correlación positiva leve (0.22).
-*   **Categoría (`category`):** La categoría `shopping_net` tiene una tasa de fraude significativamente más alta.
-*   **Género (`gender`):** Se observó una diferencia en la tasa de fraude entre hombres y mujeres.
-*   **Ubicación (`state`, `city`, `job`):** Ciertos estados, ciudades y profesiones muestran tasas de fraude extremas.
-*   **Fecha y Hora (`month`, `day`, `hour`):** Hay patrones temporales en la ocurrencia de fraudes.
-*   **Edad (`age`):** Las transacciones fraudulentas tienden a estar asociadas con edades más altas, siendo el grupo 80-89 el de mayor tasa.
-*   **Año (`year`):** Fuerte correlación positiva (0.87) con la variable de fraude.
-*   **Coordenadas Geográficas:** No se encontró una relación lineal significativa entre la ubicación del comerciante (`merch_lat`, `merch_long`) y la variable `is_fraud`.
+El análisis exploratorio, a partir de la matriz de correlación, reveló varias relaciones interesantes entre las variables explicativas y la variable objetivo `is_fraud`:
+
+*   **Ciudad (`city_target_encoded`):** Es la variable con mayor correlación con el fraude (`0.27`), lo que sugiere que ciertas ciudades tienen una incidencia significativamente más alta de transacciones fraudulentas.
+*   **Monto (`amt`):** Presenta una correlación positiva moderada (`0.21`), lo que indica que los fraudes tienden a involucrar montos ligeramente más altos que las transacciones legítimas.
+*   **Ocupación (`job_target_encoded`):** Con una correlación de `0.16`, algunas profesiones podrían estar más asociadas a transacciones fraudulentas.
+*   **Comerciante (`merchant_target_encoded`):** Con un valor de `0.07`, algunos comerciantes muestran patrones asociados al fraude, aunque la relación es débil.
+*   **Categoría (`category_target_encoded`):** También muestra una correlación baja (`0.07`), pero puede estar indicando que ciertas categorías de consumo están más expuestas al fraude.
+*   **Estado (`state_target_encoded`):** La correlación es muy baja (`0.03`), lo que sugiere una relación limitada entre el estado geográfico y el fraude.
+*   **Variables temporales (`month`, `hour`, `year`):** Muestran correlaciones muy cercanas a cero, por lo que no se observan patrones temporales significativos en este análisis.
+*   **Edad (`age`):** Presenta una correlación negativa muy baja (`-0.01`), lo cual indica que no hay una relación lineal clara entre la edad del usuario y la ocurrencia de fraude.
+*   **Género (`gender_target_encoded`):** La correlación es nula (`0.00`), lo que sugiere que no se identificó una diferencia relevante entre hombres y mujeres en cuanto a la tasa de fraude.
+*   **Coordenadas geográficas (`lat`, `long`, `merch_lat`, `merch_long`):** Todas presentan correlaciones cercanas a cero, lo que confirma que no existe una relación lineal significativa entre la ubicación geográfica y la variable objetivo `is_fraud`.
+
 
 ### MAtriz de Correlaciones
 ![Variable Objetivo](imagenes/matriz2.png)
