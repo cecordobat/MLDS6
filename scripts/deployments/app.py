@@ -79,7 +79,7 @@ def index():
         </style>
     </head>
     <body>
-        <h1>Detector de Fraude en Transacciones</h1>
+        <h1>Detector del Fraude Transaccional - Despliegue del Módulo 6 (MLDS) UNAL - Cristhian Enrique Córdoba Trillos</h1>
         <p>Ingrese los datos de la transacción en formato JSON:</p>
         <textarea id="jsonData" placeholder='{"amt": 100.50, "category": "grocery_pos", "gender": "M", ...}'>{"amt": 100.50, "category": "grocery_pos", "gender": "M", "state": "CA", "job": "engineer", "city": "Los Angeles", "merchant": "fraud_Merchant123", "lat": 34.0522, "long": -118.2437, "city_pop": 3979576, "merch_lat": 34.0522, "merch_long": -118.2437, "day": 15, "month": 6, "hour": 14, "minute": 30, "age": 35}</textarea>
         <br>
